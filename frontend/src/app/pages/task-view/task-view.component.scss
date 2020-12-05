@@ -59,6 +59,7 @@
 
         &:hover{
             background: $light;
+            transform: scale(0.95);
         }
 
         &.is-active{
@@ -74,4 +75,21 @@
     padding: 15px 20px;
     border-radius: 5px;
     margin-top: 10px;
+
+    &:not(.complete){
+    cursor: pointer;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+
+    &:active {
+        transform: scale(0.95);
+    }
+    &:hover{
+        box-shadow: 0 0 0 5px #eeeeee;
+        transform: scale(0.90);
+    }
+}
+    &.complete{
+        text-decoration: line-through;
+        opacity: 75%;
+    }
 }
