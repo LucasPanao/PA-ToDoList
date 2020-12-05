@@ -1,0 +1,27 @@
+// var global and styles
+
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap');
+
+$blue: #56CCF2;
+$dark-blue: #2F80ED;
+$more-dark-blue: #00008B;
+$light: #f8f8f8;
+
+// Bulma global vars
+$primary: $blue;
+$link: $more-dark-blue;
+
+// border and input vars
+$control-border-width: 2px;
+$input-border-color: transparent;
+$input-shadow:none;
+
+// custom global styles
+html {
+    background: linear-gradient(to left, $blue, $dark-blue);
+} 
+
+html,body {
+    height: 100%;
+    
+}
