@@ -1,6 +1,16 @@
 const express = require('express');
 const app = express();
 
+const {mongoose} = require('./db/mongoose') 
+
+const bodyParser = require('body-parser')
+
+// Load mongoose models
+const {List, Task} = require('./db/models')
+
+//load middleware
+app.use(bodyParser.json());
+
 /* ROUTE HANDLERS */
 
 /* LIST ROUTES */
@@ -9,8 +19,10 @@ const app = express();
  * Do: GET all lists 
  */
 
-app.get('/', (req,res) => {
-    
+app.get('/lists', (req,res) => {
+    List.find({}).then((lists) => {
+        res.send(lists)
+    });
 })
 
 /* POST /lists
@@ -18,8 +30,14 @@ app.get('/', (req,res) => {
 */
 
 app.post('/lists', (req,res) => {
-
-})
+    let title = req.body.title
+    let newList = new List ({
+        title
+    });
+    newList.save().then((listDoc) => {
+    res.send(listDoc)
+    });
+});
 
 /**
  * PATH /lists/:id
