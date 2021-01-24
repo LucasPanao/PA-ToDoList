@@ -44,16 +44,24 @@ app.post('/lists', (req,res) => {
  * Do: Update a specified list
  */
 app.patch('/lists/:id', (req,res) => {
-
-})
+    List.findOneAndUpdate({ _id: req.params.id }, {
+        $set: req.body
+    }).then(() => {
+        res.sendStatus(200);
+    });
+});
 
 /**
  * DELETE /lists/:id
  * Do: Delete a specified list
  */
 app.delete('/lists/:id', (req,res) => {
-
-})
+    List.findOneAndRemove({
+        _id: req.params.id
+    }).then((removedListDoc) =>{
+        res.send(removedListDoc)
+    });
+});
 
 app.listen(3000, () => {
     console.log("Servidor na porta 3000")
