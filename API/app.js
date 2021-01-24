@@ -89,6 +89,36 @@ app.post('/lists/:listId/tasks', (req,res) => {
     });
 });
 
+/**
+ * PATCH /lists/:listId/tasks/:taskId
+ * Do: Update an existing task
+ */
+
+app.patch('/lists/:listId/tasks/:taskId', (req,res) => {
+    Task.findOneAndUpdate({ 
+        _id: req.params.taskId,
+        _listId: req.params.listId
+     }, {
+        $set: req.body
+    }).then(() => {
+        res.sendStatus(200);
+    });
+});
+
+/**
+ * DELETE /lists/:listId/tasks/:taskId
+ * Do: Delete a task
+ */
+
+app.delete('/lists/:listId/tasks/:taskId', (req,res) => {
+    Task.findOneAndRemove({
+        _id: req.params.taskId,
+        _listId: req.params.listId
+    }).then((removedTaskDoc) =>{
+        res.send(removedTaskDoc)
+    });
+});
+
 app.listen(3000, () => {
     console.log("Servidor na porta 3000")
 })
