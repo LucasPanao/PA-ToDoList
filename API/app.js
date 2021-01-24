@@ -63,6 +63,32 @@ app.delete('/lists/:id', (req,res) => {
     });
 });
 
+/**
+ * GET /lists/:listId/tasks
+ * Do: Get all tasks from specific list
+ */
+app.get('/lists/:listId/tasks', (req,res) => {
+    Task.find({
+        _listId: req.params.listId
+    }).then((tasks) => {
+        res.send(tasks)
+    })
+});
+
+/* POST /lists/:listId/tasks
+*  Do: CREATE a new task in a specific listId
+*/
+
+app.post('/lists/:listId/tasks', (req,res) => {
+    let newTask = new Task ({
+        title: req.body.title,
+        _listId: req.params.listId
+    });
+    newTask.save().then((newTaskDoc) => {
+    res.send(newTaskDoc)
+    });
+});
+
 app.listen(3000, () => {
     console.log("Servidor na porta 3000")
 })
