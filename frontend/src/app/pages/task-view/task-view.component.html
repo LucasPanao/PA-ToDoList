@@ -5,14 +5,8 @@
                 Listas
             </h1>
             <div class="list-menu" >
-                <a class="list-menu-item is-active">
-                    lista de compras
-                </a>
-                <a class="list-menu-item">
-                    lista de compras
-                </a>
-                <a class="list-menu-item">
-                    lista de compras
+                <a class="list-menu-item" *ngFor="let lists of lists" [routerLink]="['/lists',lists._id]" routerLinkActive="is-active">
+                    <p>{{ lists.title }}</p>
                 </a>
             </div>
             <button class="button is-primary has-text-white" routerLink="/new-list" > + Nova Lista</button>
@@ -21,21 +15,15 @@
             <h1 class="title has-text-primary">
                 Tarefas do dia! =)
             </h1>
-            <div class="task">
+            <div class="task" *ngFor="let task of tasks">
                 <p>
-                    [x]  Algo a fazer 
+                    {{ task.title }}
                 </p>
             </div>
-            <div class="task">
-                <p>
-                    [x]   Algo a fazer 
-                </p>
-            </div>
-            <div class="task complete">
-                <p>
-                    [x]  Algo a fazer 
-                </p>
-            </div>
+
+            <button class="circle-add-button button is-primary" >
+                <img src="../../../assets/plus-icon.svg" alt="">
+            </button>
         </div>
     </div>
 </div>
