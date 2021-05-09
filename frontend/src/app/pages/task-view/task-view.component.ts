@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import { List } from 'src/app/models/list.model';
+import { Task } from 'src/app/models/task.model';
 import { TaskService } from 'src/app/task.service';
 
 @Component({
@@ -23,6 +25,13 @@ export class TaskViewComponent implements OnInit {
     )
     this.TaskService.getLists().subscribe((lists: any) => {
       this.lists = lists;
+    })
+  }
+
+  onTaskClick(task: Task) {
+    this.TaskService.complete(task).subscribe(() => {
+      console.log("Tarefa completa");
+      task.completed = !task.completed;
     })
   }
 }
