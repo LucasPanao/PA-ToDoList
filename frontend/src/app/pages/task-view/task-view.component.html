@@ -12,6 +12,7 @@
             <button class="button is-primary has-text-white" routerLink="/new-list" > + Nova Lista</button>
         </div>
         <div class="task-list-container has-background-light">
+            <div *ngIf="tasks">
             <h1 class="title has-text-primary">
                 Tarefas do dia! =)
             </h1>
@@ -21,9 +22,15 @@
                 </p>
             </div>
 
+            <h3 class="empty-state-text" *ngIf="tasks.length === 0" >Não há tarefas aqui, que tal criar uma? <h4> clique no botão + abaixo e comece </h4></h3>
+
             <button routerLink="./new-task" class="circle-add-button button is-primary" >
                 <img src="../../../assets/plus-icon.svg" alt="">
             </button>
+            </div>
+            <div *ngIf="!tasks">
+                <h3 class="empty-state-text" > Selecione uma lista ao lado </h3>
+            </div>
         </div>
     </div>
 </div>

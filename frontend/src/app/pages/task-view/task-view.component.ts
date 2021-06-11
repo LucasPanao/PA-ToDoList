@@ -16,12 +16,17 @@ export class TaskViewComponent implements OnInit {
 
   constructor(private TaskService: TaskService, private route: ActivatedRoute) { }
 
-  ngOnInit(): void {
-    this.route.params.subscribe((params: Params) => {
-      this.TaskService.getTasks(params.listId).subscribe((tasks: any) => {
-        this.tasks = tasks;
-      })
-    }
+  ngOnInit() {
+    this.route.params.subscribe(
+      (params: Params) => {
+        if (params.listId) {
+          this.TaskService.getTasks(params.listId).subscribe((tasks: any) => {
+            this.tasks = tasks;
+          })
+        } else {
+          this.tasks = undefined;
+        }
+      }
     )
     this.TaskService.getLists().subscribe((lists: any) => {
       this.lists = lists;
