@@ -1,0 +1,88 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+body {
+  font: 16px/1.2 "Roboto", sans-serif;
+  color: #333;
+}
+
+/* container */
+.container {
+  width: 100%;
+  height: 350px;
+  border-radius: 10px;
+  background-color: #333;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  z-index: 1;
+  top: 50%;
+  left: 19%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+  grid-column: auto;
+  margin-right: 25px;
+}
+
+/* leaderboard */
+.leaderboard {
+  background: linear-gradient(to bottom, #3a404d, #181c26);
+}
+
+/* head */
+.leaderboard .head {
+  padding: 20px 50px;
+  color: snow;
+  font-size: 20px;
+  text-align: center;
+}
+.leaderboard .head h1 {
+  display: flex;
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+
+/* body */
+.leaderboard .body {
+  color: snow;
+  font-size: 16px;
+}
+.leaderboard ol {
+  counter-reset: number; 
+}
+.leaderboard li {
+  padding: 16px;
+  display: flex;
+}
+.leaderboard li mark {
+  flex-grow: 1;
+  color: snow;
+  background-color: transparent;
+}
+.leaderboard li:before {
+  counter-increment: number; 
+  content: counter(number) "."; 
+  margin-right: 4px;
+}
+.leaderboard li:nth-child(1) {
+  background: #034aa1;
+}
+.leaderboard li:nth-child(2) {
+  background: #02387a;
+}
+.leaderboard li:nth-child(3) {
+  background: #02387a;
+}
+.leaderboard li:nth-child(4) {
+  background: #02387a;
+}
+.leaderboard li:nth-child(5) {
+  background: #02387a;
+}
